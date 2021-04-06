@@ -11,13 +11,16 @@ import java.math.BigDecimal;
  *
  * @author Pholo
  */
-public class CurrentAccount extends Account implements AccountService{
-    private BigDecimal overDraftLimit;
 
-    public CurrentAccount() {
-        super();
-    }
+//Current Account extends abstract class Account and implement interface Account service
+public class CurrentAccount extends Account implements AccountService{
+    private BigDecimal overDraftLimit; //declare overDraftLimit
+
+    public CurrentAccount() { //begin constructor
+        super(); //calling super class
+    } //end constructor
   
+    //constructor with arguments
     CurrentAccount(String customerNum, String accountNum,BigDecimal amount,BigDecimal overDraft){
 
       super(customerNum,accountNum,amount);
@@ -29,24 +32,31 @@ public class CurrentAccount extends Account implements AccountService{
       //convert integer value to BigDecimal value
       BigDecimal input = new BigDecimal(0);
       
+      //if overdraft is less than or equal to R100 000 return overdraft
       if(overDraftLimit.compareTo(BigDecimal.valueOf(100000))<=0){
-              this.overDraftLimit =overDraft;
-      } 
+              this.overDraftLimit =overDraft; //set overdraft
+      } //end if
+      
+      //if overdraft is greater than R100 000 return 0
       else if(overDraftLimit.compareTo(BigDecimal.valueOf(100000))>=0){
          System.out.println(" wARNING: You cannot initialise the overdraft by an amount greater than the limit of R100 000");
-         this.overDraftLimit =input;
-      } 
+         this.overDraftLimit =input; // set 0
+      } //end if
 
-    }
+    } // end constructor
+    
+    //get overdraft
     public BigDecimal getOverDraft(){
         return overDraftLimit;
-    }
+    }//end method get overdraft
+    
+    //get overdraft facility
     public BigDecimal getOverDraftFacility(){
         return balance.add(getOverDraft());
-    }
+    } //end method get overdraft facility
 
     @Override
-    public void withdraw(String accountNum, BigDecimal amountTowithdrwaw){
+    public void withdraw(String accountNum, BigDecimal amountTowithdrwaw) throws WithdrawalAmountTooLargeException, AccountNotFoundException{ //overriden method withdraw
         
         if (amountTowithdrwaw.compareTo(BigDecimal.valueOf(1)) > 0 && amountTowithdrwaw.compareTo(getOverDraftFacility()) <= 0) {
           balance = balance.subtract(amountTowithdrwaw); 
