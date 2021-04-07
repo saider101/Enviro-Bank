@@ -17,8 +17,7 @@ import java.util.Map;
  */
 public class SystemDB {
     private static SystemDB database_instance = null;
-    private static HashMap<String, SavingsAccount> mapSavingsAccounts = new HashMap<>();
-    private static HashMap<String, CurrentAccount> mapCurrentAccounts = new HashMap<>();
+    private static HashMap<String, Account> accounts = new HashMap<>();
     
     SystemDB(){
                      
@@ -32,30 +31,16 @@ public class SystemDB {
         return database_instance;
     }
       
-    public void getConnection(){
+    public HashMap<String, Account> getConnection(){
         
         
-        SavingsAccount s1 = new SavingsAccount("101", "1",new BigDecimal(2000));
-    	SavingsAccount s2 = new SavingsAccount("102", "2",new BigDecimal(5000));
-    	CurrentAccount c1 = new CurrentAccount("103", "3",new BigDecimal(1000), new BigDecimal(10000));
-    	CurrentAccount c2 = new CurrentAccount("104", "4",new BigDecimal(-5000), new BigDecimal(20000));
-
+        accounts.put("1", new SavingsAccount("101", "1",new BigDecimal(2000)));
+    	accounts.put("2", new SavingsAccount("102", "2",new BigDecimal(5000)));
+    	accounts.put("3", new CurrentAccount("103", "3",new BigDecimal(1000), new BigDecimal(10000)));
+    	accounts.put("4", new CurrentAccount("104", "4",new BigDecimal(-5000), new BigDecimal(20000)));
         
-        
-        mapSavingsAccounts.put(s1.getAccountNum(), s1);
-        mapSavingsAccounts.put(s2.getAccountNum(), s2);
-        mapCurrentAccounts.put(c1.getAccountNum(), c1);
-        mapCurrentAccounts.put(c2.getAccountNum(), c2);
+        return accounts;
         
     }
-    
-    public static HashMap<String, SavingsAccount> getSavingsAccountHashMap(){
-        return mapSavingsAccounts;
-    }
-    
-    public static HashMap<String, CurrentAccount> getCurrentAccountHashMap(){
-        return mapCurrentAccounts;
-    }
-
 }
 

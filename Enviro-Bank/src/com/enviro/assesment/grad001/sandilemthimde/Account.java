@@ -15,15 +15,15 @@ public  abstract class Account { //declare an abstruct class account
     public BigDecimal balance; //declare balance to be BigDecimal
     public String customerNum; //declare customer number to be a String
     public String accountNum; // declare the customer number to be a String
+    public BigDecimal overDraft;
 
-    public Account() { // declare a default constructor
+    public BigDecimal getOverDraft() {
+        return overDraft;
     }
 
-    public Account(String customerNum, String accountNumBig,BigDecimal balance) { //declaring a constructor with arguments
-        this.balance = balance; // set "this" object's balance
-        this.customerNum = customerNum; // set "this" object's customerNum
-        this.accountNum = accountNum; // set "this" object's accountNum
-    }// end Account constructor
+    public void setOverDraft(BigDecimal overDraft) {
+        this.overDraft = overDraft;
+    }
     
     //set account number
     public void setBalance(BigDecimal balance) { 

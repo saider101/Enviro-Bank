@@ -16,16 +16,10 @@ public class SavingsAccount extends Account implements AccountService{
     
     BigDecimal minimumBalance = new BigDecimal(1000);
 
-    public SavingsAccount() {
-        super();
-    }
-
   //convert the string to BigDecimal value
   BigDecimal input = new BigDecimal(0);  
         
-  SavingsAccount(String customerNum,String accountNum, BigDecimal amount){
-    
-    super(customerNum,accountNum,amount);
+  SavingsAccount(String customerNum,String accountNum, BigDecimal amount) {
     
     this.customerNum = customerNum; 
     this.accountNum = accountNum;
@@ -33,8 +27,8 @@ public class SavingsAccount extends Account implements AccountService{
         if (amount.compareTo(BigDecimal.valueOf(1000))>=0){
           this.balance = amount; 
         } else { 
-          System.out.println(" wARNING: You cannot initislise an account with amount less than R1000");
-          System.out.println(" wARNING: Balance will be set to 0 instead");
+          System.out.println("wARNING: You cannot initialise an account with amount less than R1000");
+          System.out.println("wARNING: Balance will be set to 0 instead");
           this.balance = input; 
         }
 
@@ -47,18 +41,18 @@ public class SavingsAccount extends Account implements AccountService{
         if (amountTowithdrwaw.compareTo(BigDecimal.valueOf(1)) > 0 && amountTowithdrwaw.compareTo(balance) <= 0 && ((balance.subtract(amountTowithdrwaw)).compareTo(minimumBalance) >= 0)) {
             balance = balance.subtract(amountTowithdrwaw); 
         } else if ( amountTowithdrwaw.compareTo(balance) > 0) {
-            System.out.println(" wARNING: You cannot withdraw more than the current balance");
-            System.out.println(" wARNING: Your current balance is "+ this.getBalance());
-            System.out.println(" wARNING: Withdraw canceled");
+            System.out.println("wARNING: You cannot withdraw more than the current balance");
+            System.out.println("wARNING: Your current balance is "+ this.getBalance());
+            System.out.println("wARNING: Withdrawal is canceled");
           } else if( amountTowithdrwaw.compareTo(BigDecimal.valueOf(1)) > 0 && ((balance.subtract(amountTowithdrwaw)).compareTo(minimumBalance) < 0)){
-            System.out.println(" wARNING: You cannot have a balance that is less than the required minimum");
-            System.out.println(" wARNING: Your current balance is "+ this.getBalance());
-            System.out.println(" wARNING: Your balance after withdrawal is "+ (this.getBalance().subtract(amountTowithdrwaw)));
-            System.out.println(" wARNING: Withdraw canceled");
+            System.out.println("wARNING: You cannot have a balance that is less than R1000");
+            System.out.println("wARNING: Your current balance is "+ this.getBalance());
+            System.out.println("wARNING: Your balance after withdrawal can not be "+ (this.getBalance().subtract(amountTowithdrwaw)));
+            System.out.println("wARNING: Withdraw canceled");
           } else {
-            System.out.println(" wARNING: Incorrect value given as withdrawn amount");
-            System.out.println(" wARNING: Amount requeste for withdraw "+ amountTowithdrwaw);
-            System.out.println(" wARNING: Withdraw canceled");
+            System.out.println("wARNING: Incorrect value given as withdrawn amount");
+            System.out.println("wARNING: Amount requeste for withdraw "+ amountTowithdrwaw);
+            System.out.println("wARNING: Withdraw canceled");
           }
         }
 

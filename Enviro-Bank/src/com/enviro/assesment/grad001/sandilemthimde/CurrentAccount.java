@@ -16,14 +16,8 @@ import java.math.BigDecimal;
 public class CurrentAccount extends Account implements AccountService{
     private BigDecimal overDraftLimit; //declare overDraftLimit
 
-    public CurrentAccount() { //begin constructor
-        super(); //calling super class
-    } //end constructor
-  
     //constructor with arguments
     CurrentAccount(String customerNum, String accountNum,BigDecimal amount,BigDecimal overDraft){
-
-      super(customerNum,accountNum,amount);
       this.customerNum = customerNum;
       this.accountNum = accountNum;
       this.balance = amount;
